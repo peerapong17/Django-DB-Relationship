@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                {% for type in types %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'football' type %}">{{type}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-4">
+            <h3>Player: {{data.name}}</h3>
+            <h4>Detail</h4>
+            <p>Nationality: <a href="/football/Country/{{data.country}}">{{data.country}}</a></p>
+            <p>Club: <a href="/football/Club/name/{{data.club}}">{{data.club}}</a></p>
+            <p>Age: {{data.age}}</p>
+            <p>Position: </p>
+            {% if positions %}
+            {% for position in positions %}
+            <li><a href="/football/Position/{{position}}">{{position}}</a></li>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
