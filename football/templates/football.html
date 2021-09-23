@@ -6,32 +6,6 @@
         margin-left: auto;
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav w-100">
-                {% for type in types %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'football' type %}">{{type}}</a>
-                </li>
-                {% endfor %}
-
-                <div class="create d-flex">
-                    {% for createType in createTypes %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/football/create/{{createType}}">{{createType}}</a>
-                    </li>
-                    {% endfor %}
-                </div>
-            </ul>
-        </div>
-    </div>
-</nav>
 <div class="container mt-5">
     <div class="row d-flex justify-content-center">
         <div class="col-6">

@@ -71,9 +71,9 @@ def position(request, position):
 def createCountry(request):
     continents = Continent.objects.all()
     if request.method == "POST":
-        continent = Continent.objects.get(id=request.POST['continent'])
+        continent = request.POST['continent']
         country = Country.objects.create(
-            name=request.POST['country'], continent=continent)
+            name=request.POST['country'], continent_id=continent)
         country.save()
     return render(request, 'createCountry.html', {"types": types, "createTypes": createTypes, "continents": continents})
 
