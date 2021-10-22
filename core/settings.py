@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'football.apps.FootballConfig',
+    'continent.apps.ContinentConfig',
+    'country.apps.CountryConfig',
+    'club.apps.ClubConfig',
+    'player.apps.PlayerConfig',
+    'position.apps.PositionConfig',
 ]
 
 MIDDLEWARE = [
@@ -63,6 +68,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'football.context_processors.continents',
+                'football.context_processors.countries',
+                'football.context_processors.clubs',
+                'football.context_processors.players',
+                'football.context_processors.positions',
+                'football.context_processors.categories',
             ],
         },
     },

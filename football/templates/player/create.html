@@ -1,0 +1,50 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<style>
+    .create {
+        margin-left: auto;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-5">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="age" class="form-label">Age</label>
+                    <input type="number" class="form-control" id="age" name="age">
+                </div>
+                <select class="form-select mb-3" name="club">
+                    <option selected disabled>Club</option>
+                    {% for club in clubs %}
+                    <option value="{{club.id}}">{{club.name}}</option>
+                    {% endfor %}
+                </select>
+                <select class="form-select mb-3" name="country">
+                    <option selected disabled>Country</option>
+                    {% for country in countries %}
+                    <option value="{{country.id}}">{{country}}</option>
+                    {% endfor %}
+                </select>
+                <p>Position</p>
+                <div class="d-flex mb-3 flex-wrap">
+                    {% for position in positions %}
+                    <div class="form-check me-2">
+                        <input class="form-check-input" type="checkbox" value="{{position.id}}" name="positions">
+                        <label class="form-check-label" for="position">
+                            {{position.position}}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 float-end">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

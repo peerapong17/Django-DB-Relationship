@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Continent(models.Model):
@@ -9,7 +10,10 @@ class Continent(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['id']
+        ordering = ['name']
+
+    def get_continent_by_Id(self):
+        return reverse('continent_by_Id', args=[self.id])
 
 
 class Country(models.Model):
@@ -21,7 +25,10 @@ class Country(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['id']
+        ordering = ['name']
+
+    def get_country_by_Id(self):
+        return reverse('country_by_Id', args=[self.id])
 
 
 class Club(models.Model):
@@ -35,7 +42,10 @@ class Club(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['id']
+        ordering = ['name']
+
+    def get_club_by_Id(self):
+        return reverse('club_by_Id', args=[self.id])
 
 
 class Position(models.Model):
@@ -47,6 +57,9 @@ class Position(models.Model):
 
     class Meta:
         ordering = ['position']
+    
+    def get_position_by_Id(self):
+        return reverse('position_by_Id', args=[self.id])
 
 
 class Player(models.Model):
@@ -61,4 +74,7 @@ class Player(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['id']
+        ordering = ['name']
+
+    def get_player_by_Id(self):
+        return reverse('player_by_Id', args=[self.id])

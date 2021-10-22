@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-4">
+            <h3>Player who can play {{position}}</h3>
+            <table class="table table-bordered">
+                <tbody>
+                    {% if players %}
+                    {% for player in players %}
+                    <tr>
+                        <td><a href="/football/Player/{{player.id}}">{{player.name}}</a></td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
