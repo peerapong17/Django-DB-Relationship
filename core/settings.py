@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'club.apps.ClubConfig',
     'player.apps.PlayerConfig',
     'position.apps.PositionConfig',
+    'user_team.apps.UserTeamConfig',
 ]
 
 MIDDLEWARE = [

@@ -21,7 +21,14 @@
                     {% for item in datas %}
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
-                        <td><a href="/{{search|lower}}/{{item.id}}">{{item.name}}</a></td>
+                        <td class="d-flex justify-content-between">
+                            <a href="/{{search|lower}}/{{item.id}}">
+                                {{item.name}}
+                            </a>
+                            <a class="btn btn-success" href="{% url 'show_team_list' item.id %}">
+                                <i class="fas fa-plus"></i>
+                            </a>
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>

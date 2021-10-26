@@ -19,25 +19,27 @@
                     <label for="age" class="form-label">Age</label>
                     <input type="number" class="form-control" id="age" name="age">
                 </div>
-                <select class="form-select mb-3" name="club">
+                <label for="club" class="form-label">Club</label>
+                <select class="form-select mb-3" name="club" id="club">
                     <option selected disabled>Club</option>
                     {% for club in clubs %}
                     <option value="{{club.id}}">{{club.name}}</option>
                     {% endfor %}
                 </select>
-                <select class="form-select mb-3" name="country">
+                <label for="country" class="form-label">Country</label>
+                <select class="form-select mb-3" name="country" id="country">
                     <option selected disabled>Country</option>
                     {% for country in countries %}
                     <option value="{{country.id}}">{{country}}</option>
                     {% endfor %}
                 </select>
-                <p>Position</p>
+                <label class="form-label">Position</label>
                 <div class="d-flex mb-3 flex-wrap">
                     {% for position in positions %}
                     <div class="form-check me-2">
                         <input class="form-check-input" type="checkbox" value="{{position.id}}" name="positions">
                         <label class="form-check-label" for="position">
-                            {{position.position}}
+                            {{position.name}}
                         </label>
                     </div>
                     {% endfor %}

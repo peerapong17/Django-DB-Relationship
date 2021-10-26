@@ -10,5 +10,6 @@ urlpatterns = [
     path('club/', include('club.urls')),
     path('player/', include('player.urls')),
     path('position/', include('position.urls')),
+    path('user-team/', include('user_team.urls')),
     path("", lambda request: redirect('football/', permanent=False)),
 ]

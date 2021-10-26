@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from .models import Club, Continent, Country, Position, Player
-from django.contrib.sessions.models import Session
-
 
 def home(request):
     return render(request, 'home/index.html')
@@ -15,6 +13,8 @@ def football_by_category(request, search):
         datas = Country.objects.all()
     elif search == "Club":
         datas = Club.objects.all()
+    elif search == "Position":
+        datas = Position.objects.all()
     else:
         datas = Player.objects.all()
 

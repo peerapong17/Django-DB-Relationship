@@ -15,13 +15,15 @@
                     <label for="club" class="form-label">Name</label>
                     <input type="text" class="form-control" id="club" name="name">
                 </div>
-                <select class="form-select mb-3" name="continent">
+                <label for="continent" class="form-label">Continent</label>
+                <select class="form-select mb-3" name="continent" id="continent">
                     <option selected disabled>Continent</option>
                     {% for continent in continents %}
                     <option value="{{continent.id}}">{{continent}}</option>
                     {% endfor %}
                 </select>
-                <select class="form-select" name="country">
+                <label for="country" class="form-label">Country</label>
+                <select class="form-select" name="country" id="country">
                     <option selected disabled>Country</option>
                     {% for country in countries %}
                     <option value="{{country.id}}">{{country}}</option>

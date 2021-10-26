@@ -12,7 +12,7 @@
             <p>Position: </p>
             {% if positions %}
             {% for position in positions %}
-            <li><a href="{{position.get_position_by_Id}}">{{position.position}}</a></li>
+            <li><a href="{{position.get_position_by_Id}}">{{position.name}}</a></li>
             {% endfor %}
             {% endif %}
         </div>

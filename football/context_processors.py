@@ -2,7 +2,7 @@ from football.models import Position, Continent, Country, Player, Club
 
 
 def categories(request):
-    categories = ['Continent', 'Country', 'Club', 'Player']
+    categories = ['Continent', 'Country', 'Club', 'Player', 'Position']
     return dict(categories=categories)
 
 
