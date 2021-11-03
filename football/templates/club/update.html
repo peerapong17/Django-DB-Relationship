@@ -13,26 +13,31 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="club" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="club" name="name">
+                    <input type="text" class="form-control" id="club" name="name" value="{{club.name}}">
                 </div>
                 <label for="continent" class="form-label">Continent</label>
                 <select class="form-select mb-3" name="continent" id="continent">
-                    <option selected disabled>Continent</option>
                     {% for continent in continents %}
+                    {% if continent.name == club.continent.name %}
+                    <option value="{{continent.id}}" selected>{{club.continent.name}}</option>
+                    {% else %}
                     <option value="{{continent.id}}">{{continent}}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <label for="country" class="form-label">Country</label>
                 <select class="form-select" name="country" id="country">
-                    <option selected disabled>Country</option>
                     {% for country in countries %}
+                    {% if country.name == club.country.name %}
+                    <option value="{{country.id}}" selected>{{club.country.name}}</option>
+                    {% else %}
                     <option value="{{country.id}}">{{country}}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <div class="mt-3 float-end">
-                    <button type="submit" class="btn btn-success">Create</button>
-                    <a href="{% url 'football_by_category' 'Club' %}"
-                        class="btn btn-secondary">Back</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{% url 'football_by_category' 'Club' %}" class="btn btn-secondary">Back</a>
                 </div>
             </form>
         </div>

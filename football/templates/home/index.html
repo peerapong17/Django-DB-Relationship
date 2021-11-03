@@ -9,24 +9,46 @@
 <div class="container">
     <div class="row mt-2 d-flex justify-content-center">
         <div class="col-6">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                {{message}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+            {% endif %}
             <h3 class="mb-3">All {{search}} in the world</h3>
             <table class="table table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">{{search}}</th>
+                        <th scope="col">Changes</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in datas %}
                     <tr>
                         <th scope="row">{{forloop.counter}}</th>
-                        <td class="d-flex justify-content-between">
+                        <td>
                             <a href="/{{search|lower}}/{{item.id}}">
                                 {{item.name}}
                             </a>
-                            <a class="btn btn-success" href="{% url 'show_team_list' item.id %}">
+                        </td>
+                        <td class="d-flex w-100" width="40%">
+                            {% if search == "Player" %}
+                            <a class="btn btn-success w-50 mx-1" href="{% url 'show_team_list' item.id %}">
                                 <i class="fas fa-plus"></i>
+                            </a>
+                            {% endif %}
+                            <a class="btn btn-primary w-50 mx-1"
+                                href="http://127.0.0.1:8000/{{search|lower}}/update/{{item.id}}">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                            <a class="btn btn-danger w-50 mx-1"
+                                href="http://127.0.0.1:8000/{{search|lower}}/delete/{{item.id}}"
+                                onclick="return window.confirm('Are you sure?')">
+                                <i class="fas fa-trash"></i>
                             </a>
                         </td>
                     </tr>

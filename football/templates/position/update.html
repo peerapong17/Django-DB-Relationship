@@ -1,0 +1,26 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<style>
+    .create {
+        margin-left: auto;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-5">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="position" class="form-label">Position</label>
+                    <input type="text" class="form-control" id="position" name="position" value="{{position.name}}">
+                </div>
+                <div class="mt-3 float-end">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{% url 'football_by_category' 'Position' %}" class="btn btn-secondary">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

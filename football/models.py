@@ -56,7 +56,7 @@ class Position(models.Model):
     name = models.CharField(max_length=20, null=False)
 
     def __str__(self):
-        return self.position
+        return self.name
 
     class Meta:
         ordering = ['id']
@@ -72,7 +72,7 @@ class Player(models.Model):
     age = models.IntegerField(blank=False, null=False)
     club = models.ForeignKey(Club, on_delete=models.CASCADE, null=True)
     country = models.ForeignKey(Country, on_delete=models.PROTECT, null=True)
-    position = models.ManyToManyField(Position)
+    positions = models.ManyToManyField(Position)
 
     def __str__(self):
         return self.name
