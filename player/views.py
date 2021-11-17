@@ -51,6 +51,10 @@ def update(request, id):
         checkboxPositions = request.POST.getlist('positions')
         selectedPositions = [int(position) for position in checkboxPositions]
 
+        print(playerPositions)
+
+        print(selectedPositions)
+
         for selectedPosition in selectedPositions:
             if selectedPosition in playerPositions:
                 for playerPosition in playerPositions:
@@ -61,12 +65,17 @@ def update(request, id):
             else:
                 positionNeeded = Position.objects.get(id=selectedPosition)
                 positionNeeded.player_set.add(player.id)
+                for playerPosition in playerPositions:
+                    if playerPosition not in selectedPositions:
+                        positionNeeded = Position.objects.get(
+                            id=playerPosition)
+                        positionNeeded.player_set.remove(player.id)
 
-        ## another way ##
+        # another way ##
         # for playerPosition in playerPositions:
         #     positionNeeded = Position.objects.get(id=playerPosition)
         #     positionNeeded.player_set.remove(player.id)
-
+        #
         # for selectedPosition in selectedPositions:
         #     positionNeeded = Position.objects.get(id=selectedPosition)
         #     positionNeeded.player_set.add(player.id)

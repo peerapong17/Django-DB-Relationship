@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Club, Continent, Country, Position, Player
 
+
 def home(request):
     return render(request, 'home/index.html')
 
@@ -19,6 +20,7 @@ def football_by_category(request, search):
         datas = Player.objects.all()
 
     return render(request, 'home/index.html', {"datas": datas, "search": search})
+
 
 def player(request, id):
     data = Player.objects.get(id=id)
@@ -43,5 +45,3 @@ def position(request, position):
     datas = Position.objects.get(position=position)
     players = datas.player_set.all()
     return render(request, 'position.html', {"datas": datas, "players": players, "position": position})
-
-

@@ -1,0 +1,31 @@
+{% extends 'layout/../layout/base.html' %}
+
+{% block content %}
+<style>
+    .create {
+        margin-left: auto;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-5">
+            <h4 class="text-danger opacity-75 fw-bold mb-3">Create your team</h4>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <label for="club" class="form-label">Club</label>
+                <select class="form-select" name="club" id="club">
+                    <option selected disabled>Club</option>
+                    {% for club in clubs %}
+                    <option value="{{club.id}}">{{club.name}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary mt-3 float-end">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'layout/../layout/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-4">
+            <h3>Player: {{player.name}}</h3>
+            <h4>Detail</h4>
+            <p>Nationality: <a href="{{player.country.get_country_by_Id}}">{{player.country}}</a></p>
+            <p>Club: <a href="{{player.club.get_club_by_Id}}">{{player.club}}</a></p>
+            <p>Age: {{player.age}}</p>
+            <p>Position: </p>
+            {% if positions %}
+            {% for position in positions %}
+            <li><a href="{{position.get_position_by_Id}}">{{position.name}}</a></li>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
